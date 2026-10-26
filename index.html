@@ -135,25 +135,17 @@ html.bi-lock,html.bi-lock body{overflow:hidden}
 .contact-card{flex:0 1 460px;width:100%;display:flex;flex-direction:column;gap:12px}
 .contact-row{display:flex;align-items:center;gap:16px;min-height:72px;padding:14px 20px;box-sizing:border-box;border:1px solid #6D3A3C;color:#EFE6DA;text-decoration:none;transition:border-color .2s ease,box-shadow .2s ease}
 .contact-row:focus-visible{border-color:#C6B39A;color:#EFE6DA;outline:none}
-@media (hover:hover){.contact-row:hover{border-color:#C6B39A;color:#EFE6DA}.contact-row:hover .cr-arrow{color:#C6B39A;transform:translateX(3px)}.save-contact:hover{background:#EFE6DA;color:#280B0F}.save-contact.is-saved:hover{background:#6D3A3C;color:#EFE6DA}}
+@media (hover:hover){.contact-row:hover{border-color:#C6B39A;color:#EFE6DA}.contact-row:hover .cr-arrow{color:#C6B39A;transform:translateX(3px)}}
 .contact-row:focus-visible{box-shadow:inset 0 0 0 1px #C6B39A}
-.cr-icon,.cr-arrow,.sc-icon{flex:none;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cr-icon,.cr-arrow{flex:none;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .cr-icon{color:#C6B39A}
 .cr-arrow{margin-left:auto;width:18px;height:18px;color:#6D3A3C;transition:color .2s ease,transform .2s ease}
 .contact-row:focus-visible .cr-arrow{color:#C6B39A;transform:translateX(3px)}
 .cr-text{display:flex;flex-direction:column;gap:4px;min-width:0}
 .cr-label{font-size:11px;letter-spacing:.22em;color:#C6B39A}
 .cr-value{font-size:17px;color:#EFE6DA;overflow-wrap:break-word}
-.save-contact{margin-top:8px;display:flex;align-items:center;justify-content:center;gap:12px;min-height:60px;padding:14px 20px;background:#C6B39A;color:#280B0F;font-size:13px;letter-spacing:.22em;text-decoration:none;transition:background .25s ease,color .25s ease}
-.save-contact:hover{color:#280B0F}
-.save-contact:focus-visible{outline:2px solid #EFE6DA;outline-offset:3px}
-.save-contact .sc-check{display:none}
-.save-contact.is-saved,.save-contact.is-saved:hover{background:#6D3A3C;color:#EFE6DA}
 @media (max-width:480px){.contact-row{gap:12px;padding:14px 16px}.cr-value{font-size:15px}}
-.save-contact.is-saved .sc-add{display:none}
-.save-contact.is-saved .sc-check{display:block}
-.save-note{margin:2px 0 0;font-size:13px;line-height:1.6;text-align:center;color:#C6B39A}
-@media (prefers-reduced-motion:reduce){.contact-row,.cr-arrow,.save-contact{transition:none}}
+@media (prefers-reduced-motion:reduce){.contact-row,.cr-arrow{transition:none}}
 </style>
 </head>
 <body>
@@ -357,8 +349,6 @@ b.hidden=false;document.documentElement.classList.add('bi-lock');
 <a class="contact-row" href="tel:+12153275832"><svg class="cr-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.6 3.5 6.2 3a2 2 0 0 0-2.3 1.6C3.4 7.6 4.6 11.2 7.7 14.3s6.7 4.3 9.7 3.8a2 2 0 0 0 1.6-2.3l-.5-2.4a1.5 1.5 0 0 0-1.6-1.2l-2.4.3-1.1 1.6a12 12 0 0 1-4-4l1.6-1.1.3-2.4a1.5 1.5 0 0 0-1.2-1.6Z"/></svg><span class="cr-text"><span class="cr-label">CALL</span><span class="cr-value">215-327-5832</span></span><svg class="cr-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 <a class="contact-row" href="mailto:SarahKozarez@gmail.com"><svg class="cr-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg><span class="cr-text"><span class="cr-label">EMAIL</span><span class="cr-value">SarahKozarez@gmail.com</span></span><svg class="cr-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 <a class="contact-row" href="https://www.linkedin.com/in/sarahkozarez" target="_blank" rel="noopener"><svg class="cr-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.2v.1M12 17v-6.5M12 13.5a3 3 0 0 1 6 0V17"/></svg><span class="cr-text"><span class="cr-label">LINKEDIN</span><span class="cr-value">linkedin.com/in/<wbr>sarahkozarez</span></span><svg class="cr-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
-<a class="save-contact" href="sarah-kozarez.vcf" download="sarah-kozarez.vcf" type="text/vcard"><svg class="sc-icon sc-add" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="4"/><path d="M2.5 20c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5M19 8v6M16 11h6"/></svg><svg class="sc-icon sc-check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m4.5 12.5 5 5L19.5 7"/></svg><span class="sc-label">SAVE MY CONTACT</span></a>
-<p class="save-note">Adds my name, number, email and LinkedIn to your phone.</p>
 </div>
 </div>
 <p style="max-width: 1280px; margin: 96px auto 0; padding-top: 24px; border-top: 1px solid #6D3A3C; font-size: 11px; letter-spacing: 0.2em">© 2026 SARAH KOZAREZ · CORPORATE MEETINGS &amp; EVENTS PORTFOLIO</p>
@@ -416,12 +406,6 @@ function pick(t,focus){tabs.forEach(function(x){var on=x===t;x.setAttribute('ari
 panel.setAttribute('aria-labelledby',t.id);cap.textContent=t.dataset.cap;if(focus)t.focus();}
 tabs.forEach(function(t,i){t.addEventListener('click',function(){pick(t);});
 t.addEventListener('keydown',function(e){var k=e.key,n=tabs.length,j=k==='ArrowRight'?(i+1)%n:k==='ArrowLeft'?(i+n-1)%n:k==='Home'?0:k==='End'?n-1:-1;if(j<0)return;e.preventDefault();pick(tabs[j],true);});});
-})();
-</script>
-<script>
-(function(){
-var b=document.querySelector('.save-contact'); if(!b) return;
-b.addEventListener('click',function(){b.classList.add('is-saved');b.querySelector('.sc-label').textContent='ADDED TO YOUR CONTACTS';});
 })();
 </script>
 </body>
