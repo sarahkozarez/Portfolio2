@@ -34,6 +34,41 @@ a, a *, button, button *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www
 </style>
 <style>html{scroll-behavior:smooth}img{max-width:100%}
 @media (max-width:600px){.nav-links{width:100%;flex-wrap:nowrap !important;justify-content:space-between;gap:12px !important;letter-spacing:0.14em !important}.nav-links a{white-space:nowrap}}</style>
+<style>
+.swipe-deck{display:none}
+@media (max-width:600px){
+.floor-grid{display:none !important}
+.swipe-deck{display:flex;flex-direction:column;align-items:center;gap:20px}
+.swipe-deck [hidden]{display:none !important}
+.swipe-hint{margin:0;font-family:'Pinyon Script',cursive;font-size:26px;white-space:nowrap;color:#6D3A3C;text-align:center}
+.swipe-stack{position:relative;width:100%;aspect-ratio:4/5}
+.swipe-card{position:absolute;inset:0;border-radius:18px;overflow:hidden;background:#361319;box-shadow:0 10px 30px rgba(40,11,15,.28);touch-action:pan-y;user-select:none;-webkit-user-select:none;transition:transform .35s ease}
+.swipe-card.dragging{transition:none}
+.swipe-card img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.swipe-card .cap{position:absolute;left:0;right:0;bottom:0;padding:56px 18px 18px;background:linear-gradient(transparent,rgba(40,11,15,.92));color:#EFE6DA;font-size:11px;letter-spacing:.2em;line-height:1.6}
+.swipe-card .stamp{position:absolute;top:22px;padding:6px 12px;border:3px solid;border-radius:8px;font-family:'Bodoni Moda',Georgia,serif;font-size:24px;letter-spacing:.12em;opacity:0;background:rgba(239,230,218,.85)}
+.swipe-card .stamp.yes{left:18px;color:#6D3A3C;transform:rotate(-14deg)}
+.swipe-card .stamp.no{right:18px;color:#361319;transform:rotate(14deg)}
+.swipe-controls{display:flex;align-items:center;gap:28px}
+.swipe-btn{width:60px;height:60px;border-radius:50%;border:1px solid #C6B39A;background:#fff;box-shadow:0 4px 14px rgba(40,11,15,.15);font-size:24px;line-height:1;color:#6D3A3C}
+.swipe-btn.swipe-no{color:#361319}
+.swipe-count{font-size:12px;letter-spacing:.2em;color:#6D3A3C;min-width:48px;text-align:center}
+.swipe-match{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;width:100%;animation:match-pop .6s cubic-bezier(.2,1.4,.4,1) both}
+.swipe-match[hidden]{display:none}
+.match-kicker{margin:0;font-family:'Pinyon Script',cursive;font-size:44px;line-height:1;color:#6D3A3C}
+.match-title{margin:-6px 0 8px;font-family:'Bodoni Moda',Georgia,serif;font-size:56px;line-height:1;letter-spacing:.08em;color:#361319}
+.match-card{position:relative;width:78%;aspect-ratio:4/5;border-radius:18px;overflow:hidden;box-shadow:0 14px 34px rgba(40,11,15,.32);transform:rotate(-3deg);animation:match-card 1s .25s cubic-bezier(.2,1.5,.4,1) both}
+.match-card img{display:block;width:100%;height:100%;object-fit:cover}
+.match-card::after{content:"\2665";position:absolute;right:12px;bottom:10px;width:46px;height:46px;border-radius:50%;background:#6D3A3C;color:#EFE6DA;font-size:22px;display:flex;align-items:center;justify-content:center}
+.match-text{margin:14px 0 4px;font-family:'Bodoni Moda',Georgia,serif;font-size:22px;line-height:1.35;color:#361319}
+.match-cta{display:inline-block;padding:14px 26px;background:#6D3A3C;color:#EFE6DA;text-decoration:none;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.match-cta:hover{color:#fff}
+.match-again{margin-top:4px;background:none;border:0;padding:10px;font:inherit;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6D3A3C;text-decoration:underline}
+@keyframes match-pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+@keyframes match-card{from{opacity:0;transform:scale(.5) rotate(-12deg)}to{opacity:1;transform:rotate(-3deg)}}
+}
+@media (max-width:600px) and (prefers-reduced-motion:reduce){.swipe-card,.swipe-match,.match-card{transition:none;animation:none}}
+</style>
 </head>
 <body>
 <div style="background: #280B0F; color: #C6B39A; font-family: 'Didact Gothic', 'Helvetica Neue', Arial, sans-serif; min-height: 100vh">
@@ -109,13 +144,26 @@ a, a *, button, button *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www
 </div>
 <div style="display: flex; flex-direction: column; gap: 24px; border-top: 1px solid #7B694E; padding-top: 40px">
 <span style="font-size: 11px; letter-spacing: 0.22em; color: #6D3A3C">FROM THE FLOOR</span>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px">
+<div class="floor-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px">
 <figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="images/stage-set-phoenix.jpg" alt="Stage set with a velvet sofa, wood floor lamp and cactus against lit drapes" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover"><figcaption style="font-size: 11px; letter-spacing: 0.2em; color: #6D3A3C">STAGE SET · PHOENIX</figcaption></figure>
 <figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="images/awards-dinner-atlanta.jpg" alt="Dinner table with red linen, red rose centerpiece and taper candles" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover"><figcaption style="font-size: 11px; letter-spacing: 0.2em; color: #6D3A3C">AWARDS DINNER TABLESCAPE · ATLANTA</figcaption></figure>
 <figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="images/outdoor-dining-phoenix.jpg" alt="Outdoor dining table among desert trees and cacti" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover"><figcaption style="font-size: 11px; letter-spacing: 0.2em; color: #6D3A3C">OUTDOOR DINING · PHOENIX</figcaption></figure>
 <figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="images/chicago.jpg" alt="Ballroom set for a team meeting with black linens, branded red water bottles and a stage with red uplighting" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: 50% 60%"><figcaption style="font-size: 11px; letter-spacing: 0.2em; color: #6D3A3C">TEAM MEETING · CHICAGO</figcaption></figure>
 <figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="images/philadelphia.jpg" alt="Rooftop lounge with striped cushions and wire chairs below an ornate stone cornice" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover"><figcaption style="font-size: 11px; letter-spacing: 0.2em; color: #6D3A3C">ROOFTOP RECEPTION · PHILADELPHIA</figcaption></figure>
 <figure style="margin: 0; display: flex; flex-direction: column; gap: 12px"><img src="images/opening-ceremony-atlanta.jpg" alt="Vocal group performing on a lit stage with large video screens" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover"><figcaption style="font-size: 11px; letter-spacing: 0.2em; color: #6D3A3C">OPENING CEREMONY ENTERTAINMENT · ATLANTA</figcaption></figure>
+</div>
+<div class="swipe-deck" aria-label="Swipe through photos from the floor">
+<p class="swipe-hint">Swipe right on the ones you love</p>
+<div class="swipe-stack"></div>
+<div class="swipe-controls"><button type="button" class="swipe-btn swipe-no" aria-label="Pass">&#x2715;</button><span class="swipe-count"></span><button type="button" class="swipe-btn swipe-yes" aria-label="Love it">&#x2665;</button></div>
+<div class="swipe-match" hidden>
+<p class="match-kicker">It&rsquo;s a</p>
+<p class="match-title">MATCH</p>
+<div class="match-card"></div>
+<p class="match-text">Looks like we&rsquo;re a match. You should have me plan your next event.</p>
+<a class="match-cta" href="#contact">Let&rsquo;s plan something</a>
+<button type="button" class="match-again">Swipe again</button>
+</div>
 </div>
 </div>
 </div>
@@ -183,5 +231,30 @@ a, a *, button, button *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www
 </section>
 
 </div>
+<script>
+(function(){
+var deck=document.querySelector('.swipe-deck'); if(!deck) return;
+var photos=[].map.call(document.querySelectorAll('.floor-grid figure'),function(f){var img=f.querySelector('img');return {src:img.getAttribute('src'),alt:img.alt,pos:img.style.objectPosition||'50% 50%',cap:f.querySelector('figcaption').textContent};});
+var stack=deck.querySelector('.swipe-stack'), controls=deck.querySelector('.swipe-controls'), count=deck.querySelector('.swipe-count'), hint=deck.querySelector('.swipe-hint'), match=deck.querySelector('.swipe-match');
+var idx=0, liked=null;
+function card(p){var c=document.createElement('div');c.className='swipe-card';c.innerHTML='<img alt=""><span class="stamp yes">LOVE IT</span><span class="stamp no">PASS</span><div class="cap"></div>';var i=c.querySelector('img');i.src=p.src;i.alt=p.alt;i.style.objectPosition=p.pos;c.querySelector('.cap').textContent=p.cap;return c;}
+function layout(){[].forEach.call(stack.children,function(c,k){var d=stack.children.length-1-k;if(c.classList.contains('gone'))return;c.style.transform=d?'translateY('+(d*10)+'px) scale('+(1-d*.04)+')':'';c.style.zIndex=10-d;});count.textContent=Math.min(idx+1,photos.length)+' / '+photos.length;}
+function deal(){stack.innerHTML='';idx=0;liked=null;for(var k=photos.length-1;k>=0;k--){var c=card(photos[k]);if(k>2)c.style.visibility='hidden';stack.appendChild(c);}stack.hidden=false;controls.hidden=false;hint.hidden=false;match.hidden=true;layout();arm();}
+function top(){var t=stack.querySelectorAll('.swipe-card:not(.gone)');return t[t.length-1];}
+function fling(dir){var c=top();if(!c)return;c.classList.remove('dragging');c.classList.add('gone');c.style.transform='translateX('+(dir*140)+'%) rotate('+(dir*24)+'deg)';c.querySelector(dir>0?'.yes':'.no').style.opacity=1;if(dir>0&&!liked)liked=photos[idx];idx++;
+var rest=stack.querySelectorAll('.swipe-card:not(.gone)');if(rest.length>2)rest[rest.length-3].style.visibility='';layout();
+setTimeout(function(){c.remove();if(idx>=photos.length)showMatch();else arm();},320);}
+function showMatch(){stack.hidden=true;controls.hidden=true;hint.hidden=true;if(!liked){deck.parentElement.style.display="none";return;}var p=liked;match.querySelector('.match-card').innerHTML='<img src="'+p.src+'" alt="'+p.alt.replace(/"/g,'&quot;')+'" style="object-position:'+p.pos+'">';match.hidden=false;}
+function arm(){var c=top();if(!c||c._armed)return;c._armed=1;var x0=0,y0=0,dx=0,on=false;
+c.addEventListener('pointerdown',function(e){on=true;x0=e.clientX;y0=e.clientY;dx=0;c.classList.add('dragging');c.setPointerCapture(e.pointerId);});
+c.addEventListener('pointermove',function(e){if(!on)return;dx=e.clientX-x0;c.style.transform='translateX('+dx+'px) rotate('+(dx/14)+'deg)';c.querySelector('.yes').style.opacity=Math.max(0,Math.min(1,dx/90));c.querySelector('.no').style.opacity=Math.max(0,Math.min(1,-dx/90));});
+function up(){if(!on)return;on=false;if(Math.abs(dx)>90)fling(dx>0?1:-1);else{c.classList.remove('dragging');c.style.transform='';c.querySelector('.yes').style.opacity=0;c.querySelector('.no').style.opacity=0;}}
+c.addEventListener('pointerup',up);c.addEventListener('pointercancel',up);}
+deck.querySelector('.swipe-yes').addEventListener('click',function(){fling(1);});
+deck.querySelector('.swipe-no').addEventListener('click',function(){fling(-1);});
+match.querySelector('.match-again').addEventListener('click',deal);
+deal();
+})();
+</script>
 </body>
 </html>
