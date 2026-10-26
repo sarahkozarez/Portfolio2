@@ -114,6 +114,22 @@ html.bi-lock,html.bi-lock body{overflow:hidden}
 .bi-tap{animation:bi-show 0s 2.7s both}
 }
 </style>
+<style>
+.app-demo{flex:0 1 340px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:24px}
+.app-phone{width:100%;max-width:280px;padding:10px;box-sizing:border-box;background:#361319;border-radius:46px;box-shadow:0 0 0 1px #6D3A3C,0 28px 60px rgba(26,6,9,.55)}
+.app-screen{position:relative;aspect-ratio:832/1800;border-radius:36px;overflow:hidden;background:#EFE6DA}
+.app-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s ease}
+.app-screen img.is-active{opacity:1}
+.app-island{position:absolute;z-index:2;top:9px;left:50%;width:30%;height:18px;margin-left:-15%;border-radius:12px;background:#361319}
+.app-tabs{display:flex;flex-wrap:nowrap;justify-content:center;gap:8px}
+.app-tabs button{padding:9px 13px;border:1px solid #C6B39A;border-radius:999px;background:transparent;color:#C6B39A;font:inherit;font-size:11px;letter-spacing:.12em;white-space:nowrap;text-transform:uppercase;transition:background .2s ease,color .2s ease}
+.app-tabs button:hover{color:#EFE6DA;border-color:#EFE6DA}
+.app-tabs button[aria-selected="true"]{background:#C6B39A;border-color:#C6B39A;color:#280B0F}
+.app-tabs button:focus-visible{outline:2px solid #EFE6DA;outline-offset:3px}
+.app-cap{margin:0;min-height:3.2em;max-width:300px;font-size:15px;line-height:1.6;text-align:center;color:#C6B39A}
+@media (max-width:380px){.app-tabs{gap:6px}.app-tabs button{padding:8px 10px;letter-spacing:.08em}}
+@media (prefers-reduced-motion:reduce){.app-screen img,.app-tabs button{transition:none}}
+</style>
 </head>
 <body>
 <div style="background: #280B0F; color: #C6B39A; font-family: 'Didact Gothic', 'Helvetica Neue', Arial, sans-serif; min-height: 100vh">
@@ -251,19 +267,29 @@ b.hidden=false;document.documentElement.classList.add('bi-lock');
 </section>
 
 <section id="tech" style="padding: 112px 40px">
-<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 56px">
-<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 20px">
+<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 64px 80px">
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 20px">
 <h2 style="margin: 0; font-family: 'Bodoni Moda', Didot, Georgia, serif; font-weight: 400; font-size: clamp(44px, 6vw, 80px); line-height: 0.95; color: #EFE6DA">EVENT <em style="font-family: 'Pinyon Script', cursive; font-style: normal; color: #C6B39A">Tech</em></h2>
 <p style="margin: 0; font-size: 16px; line-height: 1.7">The platforms behind the experience. What attendees get on-site information from, register through, and remember until they arrive home.</p>
 </div>
-<div style="flex: 2 1 560px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px">
 <div style="background: #361319; padding: 32px; display: flex; flex-direction: column; gap: 12px"><span style="font-size: 11px; letter-spacing: 0.22em">EVENT APP</span><h3 style="margin: 0; font-family: 'Bodoni Moda', Didot, Georgia, serif; font-weight: 400; font-size: 34px; color: #EFE6DA">SpotMe</h3><p style="margin: 0; font-size: 15px; line-height: 1.6">App management for live programs: agenda, attendee content and day‑of updates.</p></div>
 <div style="background: #361319; padding: 32px; display: flex; flex-direction: column; gap: 12px"><span style="font-size: 11px; letter-spacing: 0.22em">REGISTRATION</span><h3 style="margin: 0; font-family: 'Bodoni Moda', Didot, Georgia, serif; font-weight: 400; font-size: 34px; color: #EFE6DA">Cvent</h3><p style="margin: 0; font-size: 15px; line-height: 1.6">Registration sites, attendee management and reporting.</p></div>
 </div>
-<div style="flex: 1 1 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-top: 16px">
-<figure style="margin: 0; display: flex; flex-direction: column; gap: 16px; align-items: center"><img src="images/app-agenda.jpg" alt="Event app agenda screen for the National Sales Meeting" style="display: block; width: 100%; max-width: 260px; border-radius: 28px; border: 6px solid #361319"><figcaption style="text-align: center; font-size: 12px; letter-spacing: 0.16em; line-height: 1.6">AGENDA</figcaption></figure>
-<figure style="margin: 0; display: flex; flex-direction: column; gap: 16px; align-items: center"><img src="images/app-info-hub.jpg" alt="Event app information hub with Know Before You Go, attire, travel and Wi-Fi sections" style="display: block; width: 100%; max-width: 260px; border-radius: 28px; border: 6px solid #361319"><figcaption style="text-align: center; font-size: 12px; letter-spacing: 0.16em; line-height: 1.6">EVENT INFORMATION HUB</figcaption></figure>
-<figure style="margin: 0; display: flex; flex-direction: column; gap: 16px; align-items: center"><img src="images/app-notifications.jpg" alt="Event app push notifications for meals, team building and a thank-you message" style="display: block; width: 100%; max-width: 260px; border-radius: 28px; border: 6px solid #361319"><figcaption style="text-align: center; font-size: 12px; letter-spacing: 0.16em; line-height: 1.6">PUSH NOTIFICATIONS</figcaption></figure>
+</div>
+<div class="app-demo">
+<div class="app-phone"><div class="app-screen" id="app-panel" role="tabpanel" aria-labelledby="app-tab-agenda"><span class="app-island" aria-hidden="true"></span>
+<img src="images/app-agenda.jpg" alt="Event app agenda screen for the National Sales Meeting" class="is-active">
+<img src="images/app-info-hub.jpg" alt="Event app information hub with Know Before You Go, attire, travel and Wi-Fi sections" aria-hidden="true">
+<img src="images/app-notifications.jpg" alt="Event app push notifications for meals, team building and a thank-you message" aria-hidden="true">
+</div></div>
+<div class="app-tabs" role="tablist" aria-label="Event app screens">
+<button type="button" role="tab" id="app-tab-agenda" aria-selected="true" aria-controls="app-panel" data-i="0" data-cap="The full agenda by day, with rooms and session tags.">Agenda</button>
+<button type="button" role="tab" id="app-tab-info" aria-selected="false" aria-controls="app-panel" tabindex="-1" data-i="1" data-cap="Know Before You Go: attire, travel, Wi-Fi and dining in one place.">Info Hub</button>
+<button type="button" role="tab" id="app-tab-notif" aria-selected="false" aria-controls="app-panel" tabindex="-1" data-i="2" data-cap="Day-of push updates for meals, team building and a thank-you.">Notifications</button>
+</div>
+<p class="app-cap" aria-live="polite">The full agenda by day, with rooms and session tags.</p>
 </div>
 </div>
 </section>
@@ -352,6 +378,17 @@ b.addEventListener('click',go);
 (mq.addEventListener?mq.addEventListener('change',function(){if(!mq.matches){done=true;finish();}}):0);
 addEventListener('resize',fit);fit();
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+})();
+</script>
+<script>
+(function(){
+var tabs=[].slice.call(document.querySelectorAll('.app-tabs [role=tab]')); if(!tabs.length) return;
+var panel=document.getElementById('app-panel'), imgs=panel.querySelectorAll('img'), cap=document.querySelector('.app-cap');
+function pick(t,focus){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;});
+[].forEach.call(imgs,function(im,i){var on=i==t.dataset.i;im.classList.toggle('is-active',on);if(on)im.removeAttribute('aria-hidden');else im.setAttribute('aria-hidden','true');});
+panel.setAttribute('aria-labelledby',t.id);cap.textContent=t.dataset.cap;if(focus)t.focus();}
+tabs.forEach(function(t,i){t.addEventListener('click',function(){pick(t);});
+t.addEventListener('keydown',function(e){var k=e.key,n=tabs.length,j=k==='ArrowRight'?(i+1)%n:k==='ArrowLeft'?(i+n-1)%n:k==='Home'?0:k==='End'?n-1:-1;if(j<0)return;e.preventDefault();pick(tabs[j],true);});});
 })();
 </script>
 </body>
